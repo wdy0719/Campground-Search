@@ -1,1 +1,3 @@
+To run the app, paste this in the terminal:
 streamlit run streamlit_app.py
+It will open a website in your web browser that runs our program. It doesnt matter which folder you run it in.
