@@ -14,6 +14,7 @@ from ui_components import (
     reservation_card,
     date_card,
     official_map_button,
+    campground_feedback_widget,
 )
 
 
@@ -130,6 +131,7 @@ with tab_dates:
             review = cached_review(campground)
 
         campground_summary(campground, review)
+        campground_feedback_widget(campground)
         official_map_button(campground)
 
         if flexible:

@@ -124,3 +124,33 @@ def date_card(date_item, campground, nights, review, unique_suffix=""):
         st.session_state["selected_review"] = review
         st.session_state["page"] = "sites"
         st.rerun()
+from feedback_core import add_feedback, get_feedback_summary
+
+
+def campground_feedback_widget(campground):
+    summary = get_feedback_summary(campground)
+
+    st.markdown("### Campground Feedback")
+
+    if summary["total"] == 0:
+        st.write("No user feedback yet.")
+    else:
+        st.write(
+            f"👍 {summary['thumbs_up']}  |  "
+            f"👎 {summary['thumbs_down']}  |  "
+            f"{summary['percent_positive']}% positive"
+        )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button(f"👍 Like {campground['name']}", key=f"like-{campground['id']}"):
+            add_feedback(campground, "up")
+            st.success("Thanks for your feedback!")
+            st.rerun()
+
+    with col2:
+        if st.button(f"👎 Dislike {campground['name']}", key=f"dislike-{campground['id']}"):
+            add_feedback(campground, "down")
+            st.success("Thanks for your feedback!")
+            st.rerun()
