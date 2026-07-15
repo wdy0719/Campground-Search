@@ -1,6 +1,0 @@
-Repository Managing-Access levels
-User Login
-Online publishing
----------------------------------------
-Database developing
-
